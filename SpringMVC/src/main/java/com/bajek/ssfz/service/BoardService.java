@@ -12,9 +12,9 @@ public interface BoardService {
 
 	public void updateBoard(BoardVO vo) throws Exception;
 
-	public void deleteBoard(BoardVO vo) throws Exception;
+	public void deleteBoard(int seq) throws Exception;
 
-	public BoardVO getBoard(BoardVO vo) throws Exception;
+	public BoardVO getBoard(int seq) throws Exception;
 
 	public List<BoardVO> getBoardList(BoardVO vo) throws Exception;
 

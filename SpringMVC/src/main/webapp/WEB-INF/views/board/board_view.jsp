@@ -12,7 +12,7 @@
 	$(document).ready(function() {
 		$("#btnDelete").click(function() {
 			if (confirm("삭제하시겠습니까?")) {
-				document.form1.action = "${path}/board/delete.do";
+				document.form1.action = "/board/delete";
 				document.form1.submit();
 			}
 		});
@@ -39,7 +39,7 @@
 				document.form1.writer.focus();
 				return;
 			}
-			document.form1.action = "${path}/board/update.do"
+			document.form1.action = "/board/update"
 			// 폼에 입력한 데이터를 서버로 전송
 			document.form1.submit();
 		});
@@ -47,7 +47,7 @@
 </script>
 </head>
 <body>
-	<%-- <%@ include file="../include/menu.jsp" %> --%>
+	<%@ include file="../menu/top_menu.jsp"%>
 	<h2>게시글 보기</h2>
 	<form name="form1" method="post">
 		<div>

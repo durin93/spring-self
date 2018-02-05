@@ -22,12 +22,12 @@ public class BoardDAO {
 		mybatis.update("BoardDAO.updateBoard", vo);
 	}
 
-	public void deleteBoard(BoardVO vo) {
-		mybatis.delete("BoardDAO.deleteBoard", vo);
+	public void deleteBoard(int seq) {
+		mybatis.delete("BoardDAO.deleteBoard", seq);
 	}
 
-	public BoardVO getBoard(BoardVO vo) {
-		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
+	public BoardVO getBoard(int seq) {
+		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", seq);
 	}
 
 	public List<BoardVO> getBoardList(BoardVO vo) {
