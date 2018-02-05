@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="MemberDAO">
+	<select id="memberList" resultType="com.bajek.ssfz.vo.MemberVO">
+		SELECT
+		userId,
+		userName,
+		userEmail,
+		userRegdate
+		FROM member
+		ORDER BY userName
+	</select>
+
+	<!-- 02. 회원 등록 -->
+	<insert id="insertMember">
+		INSERT INTO member
+		(userId, userPw, userName,
+		userEmail, userRegdate)
+		VALUES
+		(#{userId}, #{userPw}, #{userName},
+		#{userEmail}, SYSDATE())
+	</insert>
+
+	<!-- 03. 회원정보 상세조회 -->
+	<select id="viewMember" resultType="com.bajek.ssfz.vo.MemberVO">
+		SELECT
+		userId,
+		userName,
+		userEmail,
+		userRegdate,
+		userUpdatedate
+		FROM member
+		WHERE userId =
+		#{userId}
+	</select>
+
+	<!-- 04. 회원정보 수정처리 -->
+	<update id="updateMember">
+		UPDATE member
+		SET
+		userPw = #{userPw},
+		userName =
+		#{userName},
+		userEmail = #{userEmail},
+		userUpdatedate = SYSDATE()
+		WHERE
+		userId = #{userId}
+	</update>
+	
+	 <!-- 05. 회원정보 삭제 처리 -->
+    <delete id="deleteMember">
+        DELETE FROM member
+        WHERE userId = #{userId}
+    </delete>
+
+	<!-- 06. 비밀번호 체크 -->
+	<select id="checkPW" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM member
+		WHERE
+		userId = #{userId} AND userPw = #{userPw}
+	</select>
+
+
+
+</mapper>
